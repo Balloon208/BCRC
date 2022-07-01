@@ -88,7 +88,7 @@ void selectstage()
 
     d = rand() % 1000 + 1;
 
-    if(a<=700)
+    if(a<=700 || newlegend==0)
     {
         b = rand() % legend + 1;
         if(b<=20 || b==48) c = rand() % 8 + 1;
