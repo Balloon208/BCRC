@@ -88,7 +88,7 @@ void selectstage()
 
     d = rand() % 1000 + 1;
 
-    if(a<=700 || newlegend==0)
+    if(a<=850 || newlegend==0)
     {
         b = rand() % legend + 1;
         if(b<=20 || b==48) c = rand() % 8 + 1;
@@ -107,7 +107,100 @@ void selectstage()
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10);
         printf("신레전드 ");
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
-        printf("%d장 %d스테이지 %d성\n", a%legend, b, c<=500?1:c<=800?2:3);
+        printf("%d장 %d스테이지 %d성\n", b%newlegend+1, c, d<=500?1:d<=800?2:3);
+    }
+}
+
+void selectmission()
+{
+    int a, b;
+    a = rand() % 1000 + 1;
+
+    if(a<=200) // 20% (6.6, 6.6, 6.6)
+    {
+        b = rand() % 3 + 1;
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+        printf("Mission : %d단 진화 캐릭터만 사용\n", b);
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+    }
+    else if(a<=300) // 10%
+    {
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+        printf("Mission : 모든 유닛을 1회 이상 소환하기(클리어 조건)\n", b+500);
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+    }
+    else if(a<=400) // 10%
+    {
+        b = rand() % 2 +1;
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+        printf("Mission : %d번째 슬롯에 꼬맹이 고양이(1진) 포함\n", b==1?3:8);
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+    }
+    else if(a<=450) // 5%
+    {
+        b = rand() % 5000 + 1;
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+        printf("Mission : %d원 이하의 캐릭터만 사용\n", b+500);
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+    }
+    else if(a<=500) // 5%
+    {
+        b = rand() % 2000 + 1;
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+        printf("Mission : %d원 이상의 캐릭터만 사용\n", b);
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+    }
+    else if(a<=550) // 5%
+    {
+        b = rand() % 5 + 1;
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+        printf("Mission : %d개 슬롯 비우기\n", b+3);
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+    }
+    else if(a<=600) // 5%
+    {
+        b = rand() % 2 + 1;
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+        printf("Mission : %d페이지만 출진\n", b);
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+    }
+    else if(a<=700) // 10%
+    {
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+        printf("Misson : 물총포 사용\n");
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+    }
+    else if(a<=750) // 5%
+    {
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+        printf("Misson : 야옹컴 상시 사용\n");
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+    }
+    else if(a<=850) // 10%
+    {
+        b = rand() % 3 + 1;
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+        printf("Misson : 지갑 레벨 %d레벨 이하 유지\n", b);
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+    }
+    else if(a<=950) // 10%
+    {
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+        printf("Misson : 제약 없음\n");
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+    }
+    else if(a<=999) // 4.9%
+    {
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+        printf("Misson : 미션 다중 수행(미션 2번 뽑기)\n");
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+    }
+    else if(a==1000) // 0.1%
+    {
+        b = rand() % 2 + 1;
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+        printf("Misson : %c팀 패배\n", b==1?'A':'B');
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
     }
 }
 
@@ -117,7 +210,7 @@ int main()
     srand(GetTickCount64());
 
     load();
-    printf("냥코 랜덤 챌린지\n\n캐릭터를 뽑으실려면 c, 스테이지를 뽑을실려면 s를 입력하세요.\n(이외의 명령어는 무시되며, 동시 입력은 하지 마세요.)\n종료 하실때는 q를 입력 하세요.\n\n");
+    printf("냥코 랜덤 챌린지\n\n캐릭터를 뽑으실려면 c(1개) 혹은 d(3개중 택1)를 누르세요.\n스테이지를 뽑을실려면 s를 입력하세요.\n미션을 뽑으시려면 m을 입력하세요.\n\n(이외의 명령어는 무시되며, 동시 입력은 하지 마세요.)\n종료 하실때는 q를 입력 하세요.\n\n");
 
     while(1)
     {
@@ -125,7 +218,15 @@ int main()
         {
             key=getch();
             if(key==99) selectcharacter();
+            else if(key==100)
+            {
+                printf("3개중 1개를 선택하여 주세요.\n");
+                printf("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ\n");
+                for(int i=0; i<3; i++) selectcharacter();
+                printf("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ\n\n");
+            }
             else if(key==115) selectstage();
+            else if(key==109) selectmission();
             else if(key==113) return 0;
         }
     }
