@@ -5,6 +5,7 @@
 #include <conio.h>
 
 int n=0, ex=0, r=0, sr=0, usr=0, lr=0, legend=0, newlegend=0;
+int ranked = 0;
 
 void load() //로드 함수
 {
@@ -176,14 +177,14 @@ void selectmission()
         printf("Mission : 야옹컴 상시 사용\n");
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
     }
-    else if(a<=850) // 10%
+    else if(a<=800) // 10%
     {
         b = rand() % 3 + 1;
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
         printf("Mission : 지갑 레벨 %d레벨 이하 유지\n", b);
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
     }
-    else if(a<=950) // 10%
+    else if(a<=900) // 10%
     {
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
         printf("Mission : 제약 없음\n");
@@ -194,6 +195,7 @@ void selectmission()
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
         printf("Mission : 미션 다중 수행(미션 2번 뽑기)\n");
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+        if(ranked==1){selectmission();selectmission();}
     }
     else if(a==1000) // 0.1%
     {
@@ -207,6 +209,7 @@ void selectmission()
 void rankedmatch()
 {
     int i, c=1, a=0, b=0;
+    ranked = 1;
     system("cls");
     printf("\n     -- Ranked Match -- \n\n");
     printf("랭크 모드에 입장하였습니다. 선택 후에는 아무키나 눌러주세요.\n\n");
@@ -311,6 +314,8 @@ int main()
     load();
 
     B:
+
+    ranked=0;
 
     system("cls");
     printf("냥코 랜덤 챌린지\n\n캐릭터를 뽑으실려면 c(1개) 혹은 d(3개중 택1)를 누르세요.\n스테이지를 뽑을실려면 s를 입력하세요.\n미션을 뽑으시려면 m을 입력하세요.\n랭크모드는 r을 입력하세요.\n\n(이외의 명령어는 무시되며, 동시 입력은 하지 마세요.)\n창을 비우시려면 l을 입력하세요.\n종료 하실때는 q를 입력 하세요.\n\n");
