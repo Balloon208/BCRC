@@ -167,40 +167,139 @@ void selectmission()
     else if(a<=700) // 10%
     {
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
-        printf("Misson : 물총포 사용\n");
+        printf("Mission : 물총포 사용\n");
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
     }
     else if(a<=750) // 5%
     {
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
-        printf("Misson : 야옹컴 상시 사용\n");
+        printf("Mission : 야옹컴 상시 사용\n");
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
     }
     else if(a<=850) // 10%
     {
         b = rand() % 3 + 1;
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
-        printf("Misson : 지갑 레벨 %d레벨 이하 유지\n", b);
+        printf("Mission : 지갑 레벨 %d레벨 이하 유지\n", b);
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
     }
     else if(a<=950) // 10%
     {
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
-        printf("Misson : 제약 없음\n");
+        printf("Mission : 제약 없음\n");
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
     }
     else if(a<=999) // 4.9%
     {
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
-        printf("Misson : 미션 다중 수행(미션 2번 뽑기)\n");
+        printf("Mission : 미션 다중 수행(미션 2번 뽑기)\n");
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
     }
     else if(a==1000) // 0.1%
     {
         b = rand() % 2 + 1;
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
-        printf("Misson : %c팀 패배\n", b==1?'A':'B');
+        printf("Mission : %c팀 패배\n", b==1?'A':'B');
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+    }
+}
+
+void rankedmatch()
+{
+    int i, c=1, a=0, b=0;
+    system("cls");
+    printf("\n     -- Ranked Match -- \n\n");
+    printf("랭크 모드에 입장하였습니다. 선택 후에는 아무키나 눌러주세요.\n\n");
+
+    for(i=0; i<5; i++)
+    {
+        printf("3개중 1개를 선택하여 주세요. - A팀\n");
+        printf("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ\n");
+        for(int i=0; i<3; i++) selectcharacter();
+        printf("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ\n\n");
+        while(!getch()){}
+        printf("3개중 1개를 선택하여 주세요. - B팀\n");
+        printf("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ\n");
+        for(int i=0; i<3; i++) selectcharacter();
+        printf("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ\n\n");
+        while(!getch()){}
+        printf("3개중 1개를 선택하여 주세요. - B팀\n");
+        printf("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ\n");
+        for(int i=0; i<3; i++) selectcharacter();
+        printf("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ\n\n");
+        while(!getch()){}
+        printf("3개중 1개를 선택하여 주세요. - A팀\n");
+        printf("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ\n");
+        for(int i=0; i<3; i++) selectcharacter();
+        printf("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ\n\n");
+        while(!getch()){}
+    }
+
+    system("cls");
+    printf("\n     -- Ranked Match -- \n\n");
+    printf("캐릭터가 모두 선정 되었습니다.\n\n");
+    Sleep(1500);
+    printf("대결을 시작합니다.");
+    Sleep(2000);
+
+    while(1)
+    {
+        system("cls");
+        printf("\n     -- Ranked Match -- \n\n");
+
+        if(a==2)
+        {
+            printf("          A팀 승리!");
+            printf("\n\n         최종 스코어\n            A   B\n            %d   %d", a, b);
+            while(!getch()){}
+            return;
+        }
+        if(b==2)
+        {
+            printf("          B팀 승리!");
+            printf("\n\n         최종 스코어\n            A   B\n            %d   %d", a, b);
+            while(!getch()){}
+            return;
+        }
+        printf("           ROUND %d\n\n",c);
+
+        printf("스테이지 : ");
+        selectstage();
+        printf("\n");
+        selectmission();
+        printf("\n\n            스코어\n            A   B\n            %d   %d", a, b);
+
+        while(1)
+        {
+            int key=getch();
+            if(key=='a')
+            {
+                system("cls");
+                printf("\n     -- Ranked Match -- \n\n");
+                printf("         A팀 득점!");
+                a++;
+                while(!getch()){}
+                break;
+            }
+            if(key=='b')
+            {
+                system("cls");
+                printf("\n     -- Ranked Match -- \n\n");
+                printf("         B팀 득점!");
+                b++;
+                while(!getch()){}
+                break;
+            }
+            if(key=='=')
+            {
+                system("cls");
+                printf("\n     -- Ranked Match -- \n\n");
+                printf("           무승부!");
+                while(!getch()){}
+                break;
+            }
+        }
+        c++;
     }
 }
 
@@ -210,24 +309,34 @@ int main()
     srand(GetTickCount64());
 
     load();
-    printf("냥코 랜덤 챌린지\n\n캐릭터를 뽑으실려면 c(1개) 혹은 d(3개중 택1)를 누르세요.\n스테이지를 뽑을실려면 s를 입력하세요.\n미션을 뽑으시려면 m을 입력하세요.\n\n(이외의 명령어는 무시되며, 동시 입력은 하지 마세요.)\n종료 하실때는 q를 입력 하세요.\n\n");
+
+    B:
+
+    system("cls");
+    printf("냥코 랜덤 챌린지\n\n캐릭터를 뽑으실려면 c(1개) 혹은 d(3개중 택1)를 누르세요.\n스테이지를 뽑을실려면 s를 입력하세요.\n미션을 뽑으시려면 m을 입력하세요.\n랭크모드는 r을 입력하세요.\n\n(이외의 명령어는 무시되며, 동시 입력은 하지 마세요.)\n창을 비우시려면 l을 입력하세요.\n종료 하실때는 q를 입력 하세요.\n\n");
 
     while(1)
     {
         if(kbhit());
         {
             key=getch();
-            if(key==99) selectcharacter();
-            else if(key==100)
+            if(key=='c') selectcharacter();
+            else if(key=='d')
             {
                 printf("3개중 1개를 선택하여 주세요.\n");
                 printf("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ\n");
                 for(int i=0; i<3; i++) selectcharacter();
                 printf("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ\n\n");
             }
-            else if(key==115) selectstage();
-            else if(key==109) selectmission();
-            else if(key==113) return 0;
+            else if(key=='s') selectstage();
+            else if(key=='m') selectmission();
+            else if(key=='r')
+            {
+                rankedmatch();
+                goto B;
+            }
+            else if(key=='q') return 0;
+            else if(key=='l') goto B;
         }
     }
 }
