@@ -27,57 +27,105 @@ void load() //로드 함수
 
 void selectcharacter()
 {
-    int a, b;
+    int a, b, c;
 
     a = rand() % 1000 + 1;
 
     if(a<=100) // 10%
     {
         b = rand() % n + 1;
+        c = rand() % 100 + 1;
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
         printf("노말");
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
-        printf(" : %d\n", b);
+        if(c<=3)
+        {
+            printf(" : ");
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+            printf("Choice! \n");
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+        }
+        else printf(" : %d\n", b);
     }
-    else if(a<=300) // 20%
+    else if(a<=350) // 25%
     {
         b = rand() % ex + 1;
+        c = rand() % 100 + 1;
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 13);
         printf("EX");
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
-        printf(" : %d\n", b);
+        if(c<=3)
+        {
+            printf(" : ");
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+            printf("Choice! \n");
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+        }
+        else printf(" : %d\n", b);
     }
-    else if(a<=600) // 30%
+    else if(a<=650) // 30%
     {
         b = rand() % r + 1;
+        c = rand() % 100 + 1;
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6);
         printf("레어");
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
-        printf(" : %d\n", b);
+        if(c<=3)
+        {
+            printf(" : ");
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+            printf("Choice! \n");
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+        }
+        else printf(" : %d\n", b);
     }
-    else if(a<=800) // 20%
+    else if(a<=850) // 20%
     {
         b = rand() % sr + 1;
+        c = rand() % 100 + 1;
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
         printf("슈퍼 레어");
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
-        printf(" : %d\n", b);
+        if(c<=3)
+        {
+            printf(" : ");
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+            printf("Choice! \n");
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+        }
+        else printf(" : %d\n", b);
     }
-    else if(a<=950) // 15%
+    else if(a<=975) // 12.5%
     {
         b = rand() % usr + 1;
+        c = rand() % 100 + 1;
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 14);
         printf("올트라 슈퍼 레어");
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
-        printf(" : %d\n", b);
+        if(c<=3)
+        {
+            printf(" : ");
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+            printf("Choice! \n");
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+        }
+        else printf(" : %d\n", b);
     }
-    else if(a<=1000) // 5%
+    else if(a<=1000) // 2.5%
     {
         b = rand() % lr + 1;
+        c = rand() % 100 + 1;
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 9);
         printf("레전드 레어");
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
-        printf(" : %d\n", b);
+        if(c<=3)
+        {
+            printf(" : ");
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 11);
+            printf("Choice! \n");
+            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+        }
+        else printf(" : %d\n", b);
     }
 }
 
@@ -127,7 +175,7 @@ void selectmission()
     else if(a<=300) // 10%
     {
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
-        printf("Mission : 모든 유닛을 1회 이상 소환하기(클리어 조건)\n", b+500);
+        printf("Mission : 모든 유닛을 1회 이상 소환하기(승리 조건)\n", b+500);
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
     }
     else if(a<=400) // 10%
