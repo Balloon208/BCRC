@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1656687276 source:c:\users\user\desktop\³ÉÄÚ·£´ı\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<windows.h>
+	<conio.h>
+
+1675678075 source:c:\users\user\downloads\bcrc-master\bcrc-master\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<windows.h>
+	<conio.h>
+
